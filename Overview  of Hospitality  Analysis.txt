@@ -1,0 +1,92 @@
+Hospitality Industry Report
+
+  Introduction:
+	The hospitality industry is a crucial sector that includes services such as lodging, food and beverage, and tourism. This report focuses on key aspects of hospitality 	management, particularly hotels, bookings, rooms, and aggregated bookings.
+
+  Hotels:
+	Hotels are establishments that provide lodging services to travelers and tourists. They vary in categories such as budget hotels, luxury resorts, boutique hotels, and 	extended-stay accommodations.
+
+  Hotel Attributes:
+	- property_id: Unique identifier for the hotel.
+	- property_Name: Name of the hotel.
+	- city: Geographic location of the hotel.
+	- category: Classification based on service quality like Luxury,Business etc..
+
+  Rooms Attributes:
+	Rooms are individual lodging units within a hotel that guests can book. Room attributes include:
+		- Room ID: Unique identifier for each room.
+		- Room class: Standard,Elite,Premium,Presidential etc.
+
+
+  Bookings
+	Bookings refer to the reservations made by guests. The key attributes of a booking are:
+		- Booking ID: Unique reservation identifier.
+		- Guest Name: Name of the person making the booking.
+		- booking_id: Hotel associated with the booking.
+		- property_id: Room assigned for the stay.
+		- Check-in Date: Date the guest arrives.
+		- Check-out Date: Date the guest departs.
+		- Total Price: Cost calculated based on duration of stay and room rate.
+		- Booking Status: Confirmed, pending, or canceled.
+		- no_guests : how people are staying in the room.
+		- Total Revenue: Sum of booking prices.
+
+  Aggregated Bookings:
+		Aggregated bookings provide a summary of reservations and occupancy trends over a period.
+
+ 	 Key Aggregations:
+		- Total Bookings: Count of reservations made.
+		- Occupancy Rate: Percentage of occupied rooms versus total available rooms.
+		- Average Daily Rate (ADR): Average revenue earned per occupied room.
+		- Revenue per Available Room (RevPAR): A key metric for hotel performance.
+
+ Data cleaning:
+
+	To ensure data quality, basic statistical techniques are used for cleaning the tables. Here's a summary of the cleaning steps applied to hotels, rooms, bookings, and aggregated bookings:
+
+Data Cleaning Steps:
+	1.Handling Missing Values
+
+		-Checked for null or missing values in all tables.
+		-Filled missing values with appropriate defaults (e.g., average price for room rates, "Unknown" for missing hotel names).
+		-Dropped rows with excessive missing values when necessary.
+	2.Removing Duplicates:
+
+		-Identified and removed duplicate entries based on unique identifiers (e.g., Hotel ID, Booking ID).
+	3.Standardizing Data Types:
+
+		-Converted date columns (e.g., Date, Check-in Date, Check-out Date) to a uniform date format.
+		-Ensured numerical columns (e.g., Room Rate, Total Price) had the correct data type.
+		-Correcting Inconsistent Entries.
+		-Standardized categorical values (e.g., "Deluxe", "deluxe", "DLX" → "Deluxe").
+		-Verified and corrected incorrect values (e.g., negative room rates or occupancy counts).
+
+	3.Outlier Detection:
+
+		-Used basic statistics (mean, median, standard deviation) to identify and handle outliers.
+		-Removed or corrected extreme values in room rates, total price, and occupancy rates.
+
+Data Transformation:
+	After cleaning the data, transformations were applied to enhance its usability and generate meaningful insights
+		--Adding the new columns like occupancy % based on successful_bookings out of total capacity.
+		--Added the year ,month,day from the date to generate the revenue as per requirement.
+
+
+Generated the report based on the requirement:
+	
+	-- Used the pd.merge to analyze relationships between hotels, bookings, and rooms.
+	--Used the pd.group to  analyze booking trends and revenue.
+
+key insights:
+	-- calculated average occupancy rate per city
+	--calculated average occupancy rate in each of the room category
+	--Generated revenue month by month.
+	--identified better occupancy whether it is in weekend or weekday
+	--calculated revenue_realized per city.
+	--Graphical representation in bar and line chart to easily understand.
+
+
+  Conclusion:
+
+The analysis of hotel, booking, and room data plays a crucial role in optimizing operations within the hospitality industry. By leveraging data cleaning, transformation, and aggregation techniques, hotels can gain valuable insights into booking trends, revenue generation, and occupancy rates. These insights enable data-driven decision-making, allowing hotels to implement dynamic pricing strategies, enhance guest experiences, and maximize revenue potential. Continuous monitoring of key performance indicators (KPIs) such as occupancy rate, ADR, and RevPAR helps the industry stay competitive in an ever-evolving market. Ultimately, efficient data management contributes to improved operational efficiency and long-term business success in the hospitality sector.
+
